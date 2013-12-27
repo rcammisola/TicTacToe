@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tic-Tac-Toe</title>
+	<!-- INCLUDE REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+
+	<!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
+	<script type="text/javascript" src="js/tictactoe/app.js"></script>
+	<script type="text/javascript" src="js/tictactoe/controllers/mainController.js"></script>
+	<link rel="stylesheet" href="css/main.css">
+	
+<style>
+.board {
+	margin: 10px;
+}
+
+.board tr td {
+	height: 80px;
+	width: 80px;
+	font-size: 2em;
+	text-align: center;
+	border: 0.2px solid #ccc;
+}
+
+.win { 
+	background: #DFF0D8;
+}
+</style>
+</head>
+<body>
+    <div class='banner'>
+        <div class='container'>
+            <h1>TIC TAC TOE</h1>
+        </div>
+    </div>
+	<div class="container main-frame" ng-app="TicTacToe" ng-controller="mainController" ng-init="init()">
+		<table class="board">
+			<tr ng-repeat="row in board">
+				<td ng-repeat="cell in row" ng-click="setTile($parent.$index, $index)" ng-class="{win: cell.win}">{{cell.data}}</td>
+			</tr>
+		</table>
+		<div class="form-group">
+			<button class="btn btn-primary" ng-click="restartGame()"><i class="icon-refresh"></i> Restart game</button>
+		</div>
+        <div class="results-bottom"></div>
+	</div>
+</body>
+</html>
